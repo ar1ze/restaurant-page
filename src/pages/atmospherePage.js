@@ -1,10 +1,10 @@
 import * as dom from '../utils/dom';
 import * as parallax from '../utils/parallax';
 
-import interiorImg from '../assets/images/backgrounds/interior.jpg';
+import interiorImg from '../assets/images/gallery/interior.jpg';
 import phoImg from '../assets/images/dishes/pho.jpg';
 import coffeeImg from '../assets/images/dishes/coffee.jpg';
-import herbsImg from '../assets/images/gallery/herbs.jpg';
+import herbsImg from '../assets/images/dishes/herbs.jpg';
 import banhMiImg from '../assets/images/dishes/baguette.jpg';
 import decorImg from '../assets/images/gallery/decoration.jpg';
 

@@ -1,8 +1,8 @@
 import { PAGE_HOME, PAGE_MENU, PAGE_OUR_STORY } from './pages';
 
-import heroImg from '../assets/images/backgrounds/hero.jpg';
-import interiorImg from '../assets/images/backgrounds/interior.jpg';
-import cookingImg from '../assets/images/backgrounds/cooking.jpg';
+import heroImg from '../assets/images/gallery/hero.jpg';
+import interiorImg from '../assets/images/gallery/interior.jpg';
+import cookingImg from '../assets/images/story/cooking.jpg';
 
 export const PAGE_BACKGROUNDS = {
   [PAGE_HOME]: {
