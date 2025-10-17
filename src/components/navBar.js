@@ -1,18 +1,18 @@
+import * as dom from '../utils/dom';
 import { PAGE_HOME, PAGE_MENU, PAGE_OUR_STORY } from '../constants/pages';
-import { createElement } from '../utils/dom';
 
 export function createNav(activePage = PAGE_HOME) {
-  const nav = createElement('nav', 'header__nav');
+  const nav = dom.createElement('nav', 'header__nav');
 
-  const logo = createElement('span', 'header__logo', 'The Saigon Social');
+  const logo = dom.createElement('span', 'header__logo', 'The Saigon Social');
 
-  const navItems = createElement('div', 'header__nav-items');
-  const navLinks = createElement('div', 'header__nav-links');
+  const navItems = dom.createElement('div', 'header__nav-items');
+  const navLinks = dom.createElement('div', 'header__nav-links');
 
   const createNavButton = (id, label) => {
     const isActive = activePage === id;
     const className = `nav-link${isActive ? ' nav-link--active' : ''}`;
-    const button = createElement('button', className, label);
+    const button = dom.createElement('button', className, label);
     button.id = `${id}-btn`;
     return button;
   };
@@ -23,7 +23,7 @@ export function createNav(activePage = PAGE_HOME) {
 
   navLinks.append(homeBtn, menuBtn, ourStoryBtn);
 
-  const bookBtn = createElement(
+  const bookBtn = dom.createElement(
     'button',
     'button button--primary header__book-btn',
     'Book Table'

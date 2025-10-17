@@ -1,6 +1,6 @@
 import './scss/main.scss';
 
-import { PAGE_HOME, PAGE_MENU } from './constants/pages';
+import { PAGE_HOME, PAGE_MENU, PAGE_OUR_STORY } from './constants/pages';
 
 import { applyBackgroundOverlay } from './components/backgroundOverlay';
 import { createNav } from './components/navBar';
@@ -8,17 +8,54 @@ import { createNav } from './components/navBar';
 import { createHomePage } from './pages/homePage';
 import { createAtmospherePage } from './pages/atmospherePage';
 
-import { getElement } from './utils/dom';
+import * as dom from './utils/dom';
 
-let currentPage = PAGE_MENU;
-applyBackgroundOverlay(currentPage);
+class App {
+  constructor() {
+    this.currentPage = PAGE_HOME;
+    this.header = dom.getElement('.header');
+    this.main = dom.getElement('.main');
+    this.init();
+  }
 
-const header = getElement('.header');
-const main = getElement('.main');
+  init() {
+    this.renderPage(this.currentPage);
+  }
 
-const nav = createNav(currentPage);
-const home = createHomePage();
-const atmosphere = createAtmospherePage();
+  renderPage(page) {
+    this.currentPage = page;
+    applyBackgroundOverlay(this.currentPage);
 
-header.append(nav);
-main.append(atmosphere);
+    this.header.replaceChildren();
+    const nav = createNav(this.currentPage);
+    this.header.append(nav);
+
+    this.main.replaceChildren();
+
+    switch (page) {
+      case PAGE_HOME:
+        const home = createHomePage();
+        this.main.append(home);
+        break;
+      case PAGE_MENU:
+        const atmosphere = createAtmospherePage();
+        this.main.append(atmosphere);
+        break;
+      case PAGE_OUR_STORY:
+        break;
+    }
+
+    this.attachNavListeners();
+  }
+
+  attachNavListeners() {
+    const pages = [PAGE_HOME, PAGE_MENU, PAGE_OUR_STORY];
+
+    pages.forEach((page) => {
+      const btn = dom.getElement(`#${page}-btn`);
+      if (btn) btn.addEventListener('click', () => this.renderPage(page));
+    });
+  }
+}
+
+new App();

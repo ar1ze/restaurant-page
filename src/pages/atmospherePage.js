@@ -1,5 +1,5 @@
-import { createAtmosphereCard } from '../components/atmosphereCard';
-import { createElement } from '../utils/dom';
+import * as dom from '../utils/dom';
+import * as parallax from '../utils/parallax';
 
 import interiorImg from '../assets/images/backgrounds/interior.jpg';
 import phoImg from '../assets/images/dishes/pho.jpg';
@@ -8,11 +8,34 @@ import herbsImg from '../assets/images/gallery/herbs.jpg';
 import banhMiImg from '../assets/images/dishes/baguette.jpg';
 import decorImg from '../assets/images/gallery/decoration.jpg';
 
-export function createAtmospherePage() {
-  const section = createElement('section', 'atmosphere');
+export function createAtmosphereCard(src, alt, caption, description) {
+  const article = dom.createElement('article', 'atmosphere__card');
 
-  const heading = createElement('h2', 'atmosphere__heading', 'Our Atmosphere');
-  const grid = createElement('div', 'atmosphere__grid');
+  const img = dom.createElement('img', 'atmosphere__image');
+  img.src = src;
+  img.alt = alt;
+
+  const overlay = dom.createElement('div', 'atmosphere__overlay');
+  const span = dom.createElement('span', 'atmosphere__caption', caption);
+  const p = dom.createElement('p', 'atmosphere__description', description);
+
+  overlay.append(span, p);
+  article.append(img, overlay);
+
+  parallax.applyParallax(article, img, 1, 1.1);
+
+  return article;
+}
+
+export function createAtmospherePage() {
+  const section = dom.createElement('section', 'atmosphere');
+
+  const heading = dom.createElement(
+    'h2',
+    'atmosphere__heading',
+    'Our Atmosphere'
+  );
+  const grid = dom.createElement('div', 'atmosphere__grid');
   const cards = [
     {
       src: interiorImg,
