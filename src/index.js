@@ -1,22 +1,24 @@
 import './scss/main.scss';
 
-import { PAGE_HOME } from './constants/pages';
+import { PAGE_HOME, PAGE_MENU } from './constants/pages';
 
-import { applyBackgroundOverlay } from './components/background';
-import { createNav } from './components/nav';
+import { applyBackgroundOverlay } from './components/backgroundOverlay';
+import { createNav } from './components/navBar';
 
-import { createHomePage } from './pages/home';
+import { createHomePage } from './pages/homePage';
+import { createAtmospherePage } from './pages/atmospherePage';
 
 import { getElement } from './utils/dom';
 
-let currentPage = PAGE_HOME;
+let currentPage = PAGE_MENU;
 applyBackgroundOverlay(currentPage);
 
 const header = getElement('.header');
 const main = getElement('.main');
 
 const nav = createNav(currentPage);
-const home = createHomePage(main);
+const home = createHomePage();
+const atmosphere = createAtmospherePage();
 
-header.appendChild(nav);
-main.appendChild(home);
+header.append(nav);
+main.append(atmosphere);

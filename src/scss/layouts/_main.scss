@@ -1,7 +1,7 @@
 @use '../abstracts/variables' as *;
 
 .main {
-  flex: 1;
-  display: grid;
-  place-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

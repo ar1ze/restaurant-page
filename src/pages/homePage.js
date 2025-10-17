@@ -18,7 +18,6 @@ export function createHomePage() {
   const line2 = createElement('span', '', 'artisanal Vietnamese coffee.');
 
   tagline.append(line1, line2);
-
   hero.append(title, tagline);
 
   return hero;

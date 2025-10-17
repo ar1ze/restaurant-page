@@ -1,0 +1,119 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+$atmosphere-duration: 250ms;
+$atmosphere-timing: ease-out;
+
+$atmosphere-row-gap: 0.75rem;
+$atmosphere-overlay-padding: 1rem;
+$atmosphere-translate-overlay: $font-size-lg + 0.5 * $atmosphere-overlay-padding;
+$atmosphere-overlay-bg: linear-gradient(
+  180deg,
+  rgba($color-black, 0.25) 0%,
+  rgba($color-black, 0.8) 100%
+);
+
+$atmosphere-width-max: 100rem;
+$atmosphere-width-min: 90%;
+$atmosphere-grid-min: 19rem;
+$atmosphere-grid-max: 22rem;
+$atmosphere-grid-padding-inline: $spacing-lg;
+
+$atmosphere-shadow-light: 0 0 8px rgba(#8a9a5b, 0.3);
+$atmosphere-shadow-strong: 0 0 20px rgba(#ae8a60, 0.4);
+
+$atmosphere-description-translate: 0.5rem;
+
+.atmosphere {
+  display: grid;
+  row-gap: $spacing-3xl;
+  width: min($atmosphere-width-min, $atmosphere-width-max);
+  padding: clamp(0rem, calc(1300px - 100vw), 4rem);
+}
+
+.atmosphere__heading {
+  font-family: $font-family-heading;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-medium;
+  color: $color-cream;
+  text-align: center;
+}
+
+.atmosphere__grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax($atmosphere-grid-min, $atmosphere-grid-max)
+  );
+  place-content: center;
+  gap: $spacing-4xl;
+  padding-inline: $spacing-lg;
+}
+
+.atmosphere__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius-xl;
+
+  @include transition(box-shadow, $atmosphere-duration, $atmosphere-timing);
+  @include hover-state(
+    $shadow: (
+      $atmosphere-shadow-light,
+      $atmosphere-shadow-strong,
+    )
+  );
+}
+
+.atmosphere__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transform: scale(1.1) translate(0, 0);
+}
+
+.atmosphere__overlay {
+  position: absolute;
+  left: $spacing-none;
+  bottom: $spacing-none;
+  display: grid;
+  row-gap: $atmosphere-row-gap;
+  width: 100%;
+  text-align: center;
+  color: $color-white;
+  padding-block: $atmosphere-overlay-padding;
+  background: $atmosphere-overlay-bg;
+
+  transform: translateY($atmosphere-translate-overlay);
+  @include transition((transform), $atmosphere-duration, $atmosphere-timing);
+
+  .atmosphere__card:hover & {
+    transform: translateY(0);
+  }
+}
+
+.atmosphere__caption {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-none;
+}
+
+.atmosphere__description {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-light;
+  line-height: $line-height-none;
+
+  opacity: 0;
+  transform: translateY($atmosphere-description-translate);
+
+  @include transition(
+    (opacity, transform),
+    $atmosphere-duration,
+    $atmosphere-timing
+  );
+
+  .atmosphere__card:hover & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

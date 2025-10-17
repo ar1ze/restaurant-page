@@ -1,6 +1,9 @@
 @use '../abstracts' as *;
 
 body {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
   font-size: $font-size-base;
   font-family: $font-family-body;
 }
