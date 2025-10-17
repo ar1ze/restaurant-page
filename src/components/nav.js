@@ -1,7 +1,7 @@
-import { NAV_LINKS } from '../constants/navLinks';
+import { PAGE_HOME, PAGE_MENU, PAGE_OUR_STORY } from '../constants/pages';
 import { createElement } from '../utils/dom';
 
-export function createNav(activePage = NAV_LINKS.HOME) {
+export function createNav(activePage = PAGE_HOME) {
   const nav = createElement('nav', 'header__nav');
 
   const logo = createElement('span', 'header__logo', 'The Saigon Social');
@@ -17,9 +17,9 @@ export function createNav(activePage = NAV_LINKS.HOME) {
     return button;
   };
 
-  const homeBtn = createNavButton(NAV_LINKS.HOME, 'Home');
-  const menuBtn = createNavButton(NAV_LINKS.MENU, 'Meny');
-  const ourStoryBtn = createNavButton(NAV_LINKS.OUR_STORY, 'Our Story');
+  const homeBtn = createNavButton(PAGE_HOME, 'Home');
+  const menuBtn = createNavButton(PAGE_MENU, 'Menu');
+  const ourStoryBtn = createNavButton(PAGE_OUR_STORY, 'Our Story');
 
   navLinks.append(homeBtn, menuBtn, ourStoryBtn);
 
