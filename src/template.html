@@ -8,18 +8,27 @@
   </head>
 
   <body>
-    <header>
-      <nav class="nav">
-        <button id="home-btn">Home</button>
-        <button id="menu-btn">Meny</button>
-        <button id="about">About</button>
+    <header class="header">
+      <nav class="header__nav">
+        <span class="header__logo">The Saigon Social</span>
+        <div class="header__nav-items">
+          <div class="header__nav-links">
+            <button class="nav-link nav-link--active" id="home-btn">Home</button>
+            <button class="nav-link" id="menu-btn">Meny</button>
+            <button class="nav-link" id="our-story-btn">Our Story</button>
+          </div>
+          <button class="button button--primary header__book-btn">Book Table</button>
+        </div>
       </nav>
     </header>
-
-    <main>
-      <div id="content"></div>
+    <main class="main">
+      <section class="hero">
+        <h1 class="hero__title">Authentic Flavors, Modern Vibe</h1>
+        <p class="hero__tagline">
+          <span>Experience the heart of Saigon with our signature Pho, Banh Mi, and</span> <span>artisanal Vietnamese coffee.</span>
+        </p>
+      </section>
     </main>
-
   </body>
 
 </html>

@@ -1,0 +1,31 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+$button-padding-block: 0.5rem;
+$button-padding-inline: 1.5rem;
+
+.button {
+  padding-block: $button-padding-block;
+  padding-inline: $button-padding-inline;
+  border: none;
+  font-family: $font-family-body;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+
+  // @include transition;
+  @include transition((transform, opacity, box-shadow));
+}
+
+.button--primary {
+  background: $color-bronze;
+  color: $color-white;
+
+  // @include hover-state($cursor: pointer);
+  // @include hover-transform(scale(1.05));
+  @include hover-state(
+    $opacity: 0.9,
+    $shadow: 0 4px 8px rgba($color-black, 0.3),
+    $cursor: pointer
+  );
+  @include hover-transform(scale(1.05));
+}

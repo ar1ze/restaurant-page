@@ -1,0 +1,18 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.nav-link {
+  background: transparent;
+  border: none;
+  font-family: $font-family-body;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  color: $color-white;
+
+  @include transition((color));
+  @include hover-state($color: $color-olive, $cursor: pointer);
+}
+
+.nav-link--active {
+  color: $color-olive;
+}

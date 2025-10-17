@@ -1,10 +1,26 @@
 @use '../abstracts' as *;
 
-html {
-  font-size: 16px;
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: $font-size-base;
+  font-family: $font-family-body;
 }
 
 body {
-  font-size: $font-size-base;
-  font-family: $font-family-body;
+  background: url('../assets/images/backgrounds/hero.jpg') center / cover
+    no-repeat;
+  z-index: $z-background;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  z-index: $z-overlay;
+  top: $spacing-none;
+  left: $spacing-none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color-black, 0.45);
 }

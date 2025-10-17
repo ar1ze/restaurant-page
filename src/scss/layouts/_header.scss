@@ -1,0 +1,53 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+$header-padding-block: 1.6rem;
+$header-padding-inline: 2.1rem;
+
+$header-overlay-opacity-start: 0.01;
+$header-overlay-opacity-end: 0.8;
+
+$header-nav-overlay: linear-gradient(
+  to right,
+  rgba($color-black, $header-overlay-opacity-start) 0%,
+  rgba($color-black, $header-overlay-opacity-end) 100%
+);
+
+.header {
+  z-index: $z-base;
+  padding-block: $header-padding-block;
+  padding-inline: $header-padding-inline;
+  background: $header-nav-overlay;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  z-index: $z-header;
+  font-family: $font-family-heading;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-semibold;
+  color: $color-cream;
+
+  @include transition((color));
+  @include hover-state($color: $color-olive, $cursor: pointer);
+}
+
+.header__nav-items {
+  display: flex;
+  gap: $spacing-md;
+  z-index: $z-header;
+}
+
+.header__nav-links {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.header__book-btn {
+  border-radius: $radius-full;
+}
