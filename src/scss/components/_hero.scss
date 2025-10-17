@@ -1,0 +1,21 @@
+@use '../abstracts/variables' as *;
+
+.hero {
+  display: grid;
+  place-content: center;
+  gap: $spacing-lg;
+  margin-top: -10vh;
+  text-align: center;
+  color: $color-white;
+}
+
+.hero__title {
+  font-family: $font-family-heading;
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-medium;
+}
+
+.hero__tagline {
+  display: grid;
+  font-size: $font-size-2xl;
+}
