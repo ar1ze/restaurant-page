@@ -1,5 +1,5 @@
 import * as dom from '../utils/dom';
-import { PAGE_HOME, PAGE_MENU, PAGE_OUR_STORY } from '../constants/pages';
+import { PAGE_HOME, PAGE_MENU, PAGE_STORY } from '../constants/pages';
 
 export function createNav(activePage = PAGE_HOME) {
   const nav = dom.createElement('nav', 'header__nav');
@@ -19,7 +19,7 @@ export function createNav(activePage = PAGE_HOME) {
 
   const homeBtn = createNavButton(PAGE_HOME, 'Home');
   const menuBtn = createNavButton(PAGE_MENU, 'Menu');
-  const ourStoryBtn = createNavButton(PAGE_OUR_STORY, 'Our Story');
+  const ourStoryBtn = createNavButton(PAGE_STORY, 'Our Story');
 
   navLinks.append(homeBtn, menuBtn, ourStoryBtn);
 

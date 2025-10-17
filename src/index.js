@@ -1,6 +1,6 @@
 import './scss/main.scss';
 
-import { PAGE_HOME, PAGE_MENU, PAGE_OUR_STORY } from './constants/pages';
+import { PAGE_HOME, PAGE_MENU, PAGE_STORY } from './constants/pages';
 
 import { applyBackgroundOverlay } from './components/backgroundOverlay';
 import { createNav } from './components/navBar';
@@ -41,7 +41,7 @@ class App {
         const atmosphere = createAtmospherePage();
         this.main.append(atmosphere);
         break;
-      case PAGE_OUR_STORY:
+      case PAGE_STORY:
         break;
     }
 
@@ -49,7 +49,7 @@ class App {
   }
 
   attachNavListeners() {
-    const pages = [PAGE_HOME, PAGE_MENU, PAGE_OUR_STORY];
+    const pages = [PAGE_HOME, PAGE_MENU, PAGE_STORY];
 
     pages.forEach((page) => {
       const btn = dom.getElement(`#${page}-btn`);

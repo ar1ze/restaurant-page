@@ -1,4 +1,4 @@
-import { PAGE_HOME, PAGE_MENU, PAGE_OUR_STORY } from './pages';
+import { PAGE_HOME, PAGE_MENU, PAGE_STORY } from './pages';
 
 import heroImg from '../assets/images/gallery/hero.jpg';
 import interiorImg from '../assets/images/gallery/interior.jpg';
@@ -13,7 +13,7 @@ export const PAGE_BACKGROUNDS = {
     url: interiorImg,
     opacity: 0.9,
   },
-  [PAGE_OUR_STORY]: {
+  [PAGE_STORY]: {
     url: cookingImg,
     opacity: 0.8,
   },
