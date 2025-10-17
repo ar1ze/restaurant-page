@@ -4,6 +4,10 @@
 $button-padding-block: 0.5rem;
 $button-padding-inline: 1.5rem;
 
+$button-hover-opacity: 0.9;
+$button-hover-shadow: 0 4px 8px rgba($color-black, 0.3);
+$button-hover-scale: scale(1.05);
+
 .button {
   padding-block: $button-padding-block;
   padding-inline: $button-padding-inline;
@@ -12,20 +16,17 @@ $button-padding-inline: 1.5rem;
   font-size: $font-size-base;
   font-weight: $font-weight-medium;
 
-  // @include transition;
-  @include transition((transform, opacity, box-shadow));
+  @include transition((box-shadow, opacity, transform));
 }
 
 .button--primary {
   background: $color-bronze;
   color: $color-white;
 
-  // @include hover-state($cursor: pointer);
-  // @include hover-transform(scale(1.05));
   @include hover-state(
-    $opacity: 0.9,
-    $shadow: 0 4px 8px rgba($color-black, 0.3),
+    $opacity: $button-hover-opacity,
+    $shadow: $button-hover-shadow,
     $cursor: pointer
   );
-  @include hover-transform(scale(1.05));
+  @include hover-transform($button-hover-scale);
 }
