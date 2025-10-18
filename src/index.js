@@ -51,14 +51,19 @@ class App {
     this.attachNavListeners();
   }
 
+  handlePageChange(page) {
+    if (this.currentPage !== page) this.renderPage(page);
+  }
+
   attachNavListeners() {
     const pages = [PAGE_HOME, PAGE_MENU, PAGE_STORY];
     const logo = dom.getElement('.header__logo');
 
-    logo.addEventListener('click', () => this.renderPage(PAGE_HOME));
+    logo.addEventListener('click', () => this.handlePageChange(PAGE_HOME));
+
     pages.forEach((page) => {
       const btn = dom.getElement(`#${page}-btn`);
-      if (btn) btn.addEventListener('click', () => this.renderPage(page));
+      if (btn) btn.addEventListener('click', () => this.handlePageChange(page));
     });
   }
 }
