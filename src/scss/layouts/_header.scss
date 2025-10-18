@@ -28,10 +28,12 @@ $header-nav-overlay: linear-gradient(
 
 .header__logo {
   z-index: $z-header;
+  border: none;
   font-family: $font-family-heading;
   font-size: $font-size-3xl;
   font-weight: $font-weight-semibold;
   color: $color-cream;
+  background: transparent;
 
   @include transition((color));
   @include hover-state($color: $color-olive, $cursor: pointer);

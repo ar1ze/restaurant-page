@@ -4,7 +4,6 @@
 $button-padding-block: 0.5rem;
 $button-padding-inline: 1.5rem;
 
-$button-hover-opacity: 0.9;
 $button-hover-shadow: 0 4px 8px rgba($color-black, 0.3);
 $button-hover-scale: scale(1.05);
 
@@ -23,10 +22,6 @@ $button-hover-scale: scale(1.05);
   background: $color-bronze;
   color: $color-white;
 
-  @include hover-state(
-    $opacity: $button-hover-opacity,
-    $shadow: $button-hover-shadow,
-    $cursor: pointer
-  );
+  @include hover-state($shadow: $button-hover-shadow, $cursor: pointer);
   @include hover-transform($button-hover-scale);
 }

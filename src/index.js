@@ -13,7 +13,7 @@ import * as dom from './utils/dom';
 
 class App {
   constructor() {
-    this.currentPage = PAGE_STORY;
+    this.currentPage = PAGE_HOME;
     this.header = dom.getElement('.header');
     this.main = dom.getElement('.main');
     this.init();
@@ -53,7 +53,9 @@ class App {
 
   attachNavListeners() {
     const pages = [PAGE_HOME, PAGE_MENU, PAGE_STORY];
+    const logo = dom.getElement('.header__logo');
 
+    logo.addEventListener('click', () => this.renderPage(PAGE_HOME));
     pages.forEach((page) => {
       const btn = dom.getElement(`#${page}-btn`);
       if (btn) btn.addEventListener('click', () => this.renderPage(page));

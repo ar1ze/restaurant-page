@@ -4,7 +4,7 @@ import { PAGE_HOME, PAGE_MENU, PAGE_STORY } from '../constants/pages';
 export function createNav(activePage = PAGE_HOME) {
   const nav = dom.createElement('nav', 'header__nav');
 
-  const logo = dom.createElement('span', 'header__logo', 'The Saigon Social');
+  const logo = dom.createElement('button', 'header__logo', 'The Saigon Social');
 
   const navItems = dom.createElement('div', 'header__nav-items');
   const navLinks = dom.createElement('div', 'header__nav-links');
