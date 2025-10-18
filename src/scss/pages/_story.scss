@@ -2,13 +2,13 @@
 @use '../abstracts/mixins' as *;
 
 .story {
-  width: min(80vw, 70rem);
-  padding-block: clamp(0rem, calc(1150px - 100vw), 4rem);
+  width: min(85vw, 80rem);
+  padding-block: clamp(0rem, calc(1450px - 100vw), 4rem);
 }
 
 .story__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
   column-gap: clamp(4rem, 4vw, 6rem);
   row-gap: clamp(2rem, 1vh, 4rem);
 }
@@ -30,7 +30,7 @@
   row-gap: $spacing-xs;
   font-family: $font-family-heading;
   font-weight: $font-weight-medium;
-  font-size: $font-size-4xl;
+  font-size: $font-size-5xl;
 }
 
 .story__paragraph {
@@ -38,8 +38,8 @@
   row-gap: $spacing-md;
   font-family: $font-family-body;
   font-weight: $font-weight-light;
-  font-size: 13px;
-  color: #d5d5d4;
+  font-size: $font-size-base;
+  color: $color-pearl;
 }
 
 .story__text {
