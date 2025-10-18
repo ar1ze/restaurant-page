@@ -7,12 +7,13 @@ import { createNav } from './components/navBar';
 
 import { createHomePage } from './pages/homePage';
 import { createAtmospherePage } from './pages/atmospherePage';
+import { createStoryPage } from './pages/storyPage';
 
 import * as dom from './utils/dom';
 
 class App {
   constructor() {
-    this.currentPage = PAGE_HOME;
+    this.currentPage = PAGE_STORY;
     this.header = dom.getElement('.header');
     this.main = dom.getElement('.main');
     this.init();
@@ -42,6 +43,8 @@ class App {
         this.main.append(atmosphere);
         break;
       case PAGE_STORY:
+        const story = createStoryPage();
+        this.main.append(story);
         break;
     }
 
