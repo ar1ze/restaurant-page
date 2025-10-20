@@ -1,9 +1,13 @@
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../base/animations' as *;
 
 .main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: 2rem;
 
   & > * {
     animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);

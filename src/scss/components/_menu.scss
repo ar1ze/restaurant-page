@@ -1,0 +1,159 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../base/animations' as *;
+
+$color-bowl-dark: #3a2a1a;
+$color-bowl-light: #4a3a2a;
+$color-accent: #8a7a62;
+$color-accent-hover: #a89968;
+$color-bowl-outline: #7a6a52;
+$color-noodle: #8b7d65;
+
+$duration-normal: 300ms;
+$easing-default: ease-out;
+
+$steam-width: 3px;
+$steam-height: 32px;
+
+$bowl-width: 80px;
+$bowl-height: $bowl-width * 0.5;
+$bowl-border-width: $border-width-medium;
+
+$bowl-rim-width: $bowl-width + $bowl-border-width * 2;
+$bowl-rim-height: 20px;
+$bowl-rim-translate-x: -$bowl-border-width;
+$bowl-rim-translate-y: -$bowl-rim-height * 0.5 - $bowl-border-width;
+
+$noodle-width: 64px;
+$noodle-height: 12px;
+$noodle-translate-x: ($bowl-width - $noodle-width) * 0.5;
+$noodle-translate-y: $bowl-rim-translate-y + ($bowl-rim-height - $noodle-height) *
+  0.5;
+
+.menu {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1rem, 12vh, 8rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  color: white;
+  animation: fadeIn 0.4s ease-out;
+  transform: translateX(-50%);
+
+  @include transition((transform, filter), $duration-normal, $easing-default);
+  @include hover-state($cursor: pointer);
+
+  &:hover {
+    transform: translateX(-50%) translateY(-3px);
+    filter: drop-shadow(0 4px 12px rgba($color-accent, 0.2))
+      drop-shadow(0 2px 6px rgba($color-accent, 0.15));
+  }
+}
+
+.menu__bowl-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.menu__steam {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.menu__steam-line {
+  width: $steam-width;
+  height: $steam-height;
+  border-radius: $radius-full;
+  background: linear-gradient(
+    180deg,
+    rgba($color-white, 0) 0%,
+    rgba($color-white, 0.6) 100%
+  );
+  animation: steam-rise 2s ease-in-out infinite alternate;
+  animation-fill-mode: both;
+}
+
+@for $i from 1 through 3 {
+  .menu__steam-line:nth-child(#{$i}) {
+    animation-delay: ($i - 1) * 0.5s;
+  }
+}
+
+.menu__bowl {
+  position: relative;
+  width: $bowl-width;
+  height: $bowl-height;
+  background: linear-gradient(
+    180deg,
+    $color-bowl-light 0%,
+    $color-bowl-dark 100%
+  );
+  outline: $bowl-border-width solid rgba($color-bowl-outline, 0.6);
+  border-radius: 0 0 $radius-full $radius-full;
+}
+
+.menu__bowl::before {
+  content: '';
+  position: absolute;
+  top: $spacing-none;
+  left: $spacing-none;
+  width: $bowl-rim-width;
+  height: $bowl-rim-height;
+  border-radius: $radius-circle;
+  background: linear-gradient(to bottom, #6a5a42 0%, #5a4a32 100%);
+  opacity: 0.85;
+  transform: translateX($bowl-rim-translate-x) translateY($bowl-rim-translate-y);
+}
+
+.menu__bowl::after {
+  content: '';
+  position: absolute;
+  top: $spacing-none;
+  left: $spacing-none;
+  width: $noodle-width;
+  height: $noodle-height;
+  border-radius: $radius-circle;
+  background: rgba($color-noodle, 0.4);
+  transform: translate($noodle-translate-x, $noodle-translate-y);
+}
+
+.menu__text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.menu__headtext {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  color: $color-accent;
+  text-transform: uppercase;
+
+  @include transition((color), $duration-normal);
+
+  .menu:hover & {
+    color: $color-accent-hover;
+  }
+}
+
+.menu__subtext {
+  font-size: $font-size-xl * 0.5;
+  color: $color-accent-hover;
+  opacity: 0;
+  transform: translateY(6px);
+
+  @include transition((opacity, transform), $duration-normal, $easing-default);
+
+  .menu:hover & {
+    opacity: 1;
+    transform: translateY(4px);
+  }
+}

@@ -4,6 +4,7 @@ import { PAGE_HOME, PAGE_MENU, PAGE_STORY } from './constants/pages';
 
 import { applyBackgroundOverlay } from './components/backgroundOverlay';
 import { createNav } from './components/navBar';
+import { createMenuButton } from './components/menuButton';
 
 import { createHomePage } from './pages/homePage';
 import { createAtmospherePage } from './pages/atmospherePage';
@@ -24,6 +25,8 @@ class App {
   }
 
   renderPage(page) {
+    const body = document.body;
+
     this.currentPage = page;
     applyBackgroundOverlay(this.currentPage);
 
@@ -33,10 +36,17 @@ class App {
 
     this.main.replaceChildren();
 
+    const existingMenuBtn = dom.getElement('.menu');
+    if (existingMenuBtn) {
+      existingMenuBtn.remove();
+    }
+
     switch (page) {
       case PAGE_HOME:
         const home = createHomePage();
         this.main.append(home);
+        const menuBtn = createMenuButton();
+        body.append(menuBtn);
         break;
       case PAGE_MENU:
         const atmosphere = createAtmospherePage();
@@ -58,8 +68,11 @@ class App {
   attachNavListeners() {
     const pages = [PAGE_HOME, PAGE_MENU, PAGE_STORY];
     const logo = dom.getElement('.header__logo');
+    const menu = dom.getElement('.menu');
 
     logo.addEventListener('click', () => this.handlePageChange(PAGE_HOME));
+    if (menu)
+      menu.addEventListener('click', () => this.handlePageChange(PAGE_MENU));
 
     pages.forEach((page) => {
       const btn = dom.getElement(`#${page}-btn`);

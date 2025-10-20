@@ -1,21 +1,33 @@
-@use '../abstracts/variables' as *;
-
-@keyframes scaleIn {
+@keyframes fadeIn {
   from {
-    transform: scale(0);
-    opacity: $opacity-0;
+    opacity: 0;
   }
   to {
-    transform: scale(1);
-    opacity: $opacity-100;
+    opacity: 1;
   }
 }
 
-@keyframes fadeIn {
+@keyframes scaleIn {
   from {
-    opacity: $opacity-0;
+    opacity: 0;
+    transform: scale(0.95);
   }
   to {
-    opacity: $opacity-100;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes steam-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-25px);
+    opacity: 0;
   }
 }
