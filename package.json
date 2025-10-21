@@ -1,7 +1,7 @@
 {
-  "name": "sass-template",
+  "name": "restaurant-page",
   "version": "1.0.0",
-  "description": "A front-end project starter with a scalable Sass structure and a pre-configured Webpack environment for a rapid development workflow",
+  "description": "A restaurant website built for The Odin Project",
   "private": true,
   "scripts": {
     "start": "webpack serve",
